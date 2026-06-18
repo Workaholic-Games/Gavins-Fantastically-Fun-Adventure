@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://b4ev6t8j5l8fr" path="res://ui/fonts/MeowScript-Regular.ttf" id="1_0byv1"]
 [ext_resource type="Script" uid="uid://b25hc13op0v5i" path="res://levels/title.gd" id="1_k86xs"]
 [ext_resource type="VideoStream" uid="uid://mljq4feqomjj" path="res://branding/intro.ogv" id="3_gwl5o"]
+[ext_resource type="AudioStream" uid="uid://cb0bumt5bqasd" path="res://hover.mp3" id="4_525av"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_21ket"]
 
@@ -87,7 +88,7 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_gwl5o"]
 font = ExtResource("1_0byv1")
 font_size = 64
-font_color = Color(0.7393334, 0.32, 1, 1)
+font_color = Color(0.6146667, 0.32, 1, 1)
 outline_size = 8
 outline_color = Color(0.16, 0.16, 0.16, 1)
 shadow_size = 8
@@ -164,9 +165,18 @@ text = "Quit"
 alignment = 0
 
 [node name="Intro" type="VideoStreamPlayer" parent="TitleUI" unique_id=1541091028]
+visible = false
 offset_right = 1280.0
 offset_bottom = 720.0
 stream = ExtResource("3_gwl5o")
 expand = true
 
+[node name="Hover" type="AudioStreamPlayer" parent="." unique_id=1839979199]
+stream = ExtResource("4_525av")
+volume_db = -15.0
+pitch_scale = 1.5
+
+[connection signal="mouse_entered" from="TitleUI/VBoxContainer/Start" to="." method="_title_button_hovered"]
+[connection signal="mouse_entered" from="TitleUI/VBoxContainer/Options" to="." method="_title_button_hovered"]
+[connection signal="mouse_entered" from="TitleUI/VBoxContainer/Quit" to="." method="_title_button_hovered"]
 [connection signal="finished" from="TitleUI/Intro" to="." method="_on_intro_finished"]
