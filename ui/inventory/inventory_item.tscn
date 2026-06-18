@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://baq3ki6w1544a"]
+
+[ext_resource type="Script" uid="uid://drmhplsqt6ona" path="res://ui/inventory/inventory_item.gd" id="1_wiepw"]
+
+[node name="InventorySlot" type="Button" unique_id=1117790014]
+custom_minimum_size = Vector2(66, 66)
+custom_maximum_size = Vector2(66, 66)
+offset_right = 64.0
+offset_bottom = 64.0
+theme_type_variation = &"InventorySlot"
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_wiepw")

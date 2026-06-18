@@ -1,6 +1,4 @@
 extends CharacterBody3D
-
-
 @onready var camera : Camera3D = $Camera3D
 var look_dir : Vector2
 var camera_sensitivity : int = 15 
@@ -8,6 +6,8 @@ var paused : bool = false
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -24,6 +24,13 @@ func _notification(what):
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion: 
 		look_dir = event.relative * 0.01
+	
+	if Input.is_action_just_pressed("pause"):
+		paused = !paused
+		if paused == true:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func rotate_camera(delta: float, sensitivity_modifier : float = 1.0):
 	if paused == false:

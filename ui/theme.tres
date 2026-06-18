@@ -1,5 +1,29 @@
 [gd_resource type="Theme" format=3 uid="uid://1jf0tq88femj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqtc0"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf26r"]
+bg_color = Color(0.14044756, 0.14044741, 0.14044744, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.08, 0.08, 0.08, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lx7k"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqugq"]
 content_margin_left = 20.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -12,6 +36,11 @@ content_margin_left = 20.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
+InventorySlot/base_type = &"Button"
+InventorySlot/styles/focus = null
+InventorySlot/styles/hover = SubResource("StyleBoxFlat_iqtc0")
+InventorySlot/styles/normal = SubResource("StyleBoxFlat_jf26r")
+InventorySlot/styles/pressed = SubResource("StyleBoxFlat_6lx7k")
 TitleButton/base_type = &"Button"
 TitleButton/colors/font_color = Color(1, 1, 1, 1)
 TitleButton/colors/font_hover_color = Color(0.7581918, 0.7581918, 0.7581917, 1)

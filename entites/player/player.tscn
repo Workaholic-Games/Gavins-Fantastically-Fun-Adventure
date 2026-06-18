@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://lt37uux2d5p5"]
 
 [ext_resource type="Script" uid="uid://0dtii60b6v5p" path="res://entites/player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://baq3ki6w1544a" path="res://ui/inventory/inventory_item.tscn" id="2_qevvu"]
+[ext_resource type="Script" uid="uid://lsr8x00vub17" path="res://entites/player/inventory.gd" id="2_y1j2n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3t11"]
 
@@ -13,3 +15,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4081557, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=494137701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8958616, 0)
 shape = SubResource("CapsuleShape3D_q3t11")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=777106384]
+
+[node name="Inventory" type="GridContainer" parent="UI" unique_id=504430242]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 576.0
+offset_bottom = 128.0
+theme_override_constants/h_separation = -2
+theme_override_constants/v_separation = -2
+columns = 8
+script = ExtResource("2_y1j2n")
+
+[node name="Slot1" parent="UI/Inventory" unique_id=1117790014 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot2" parent="UI/Inventory" unique_id=851148342 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot3" parent="UI/Inventory" unique_id=13761576 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot4" parent="UI/Inventory" unique_id=1432399486 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot5" parent="UI/Inventory" unique_id=1558530599 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot6" parent="UI/Inventory" unique_id=2103394815 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot7" parent="UI/Inventory" unique_id=600178068 instance=ExtResource("2_qevvu")]
+layout_mode = 2
+
+[node name="Slot8" parent="UI/Inventory" unique_id=849444555 instance=ExtResource("2_qevvu")]
+layout_mode = 2
