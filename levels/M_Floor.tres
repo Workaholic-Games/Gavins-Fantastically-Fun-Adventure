@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dq21fx1ofivl1"]
+
+[resource]
+resource_name = "M_Floor"
+cull_mode = 2
+albedo_color = Color(0.43037397, 0.43037397, 0.43037397, 1)
+roughness = 0.5

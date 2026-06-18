@@ -1,3 +1,28 @@
 [gd_scene format=3 uid="uid://enylp8gy2fn5"]
 
-[node name="Node3D" type="Node3D" unique_id=1838011814]
+[ext_resource type="PackedScene" uid="uid://cd4dtefnnwebl" path="res://levels/The_Lab.blend" id="1_6f3v3"]
+[ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entites/player/player.tscn" id="2_cig4a"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sklu3"]
+
+[sub_resource type="Sky" id="Sky_t30lf"]
+sky_material = SubResource("ProceduralSkyMaterial_sklu3")
+
+[sub_resource type="Environment" id="Environment_cig4a"]
+background_mode = 2
+sky = SubResource("Sky_t30lf")
+
+[node name="Node3D" type="Node3D" unique_id=628838743]
+
+[node name="The_Lab" parent="." unique_id=1793377739 instance=ExtResource("1_6f3v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06087494, -0.17220092, -0.035171986)
+
+[node name="Player" parent="." unique_id=2128073826 instance=ExtResource("2_cig4a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.231997, 0.40268308, 5.021843)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891323000]
+environment = SubResource("Environment_cig4a")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1652368531]
+transform = Transform3D(1, 0, 0, 0, -0.044701546, 0.9990003, 0, -0.99900043, -0.044701576, 0, 0, 0)
+shadow_enabled = true
