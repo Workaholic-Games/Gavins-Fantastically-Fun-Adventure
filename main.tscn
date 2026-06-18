@@ -1,3 +1,70 @@
 [gd_scene format=3 uid="uid://b55itjr1rb1ve"]
 
-[node name="Node3D" type="Node3D" unique_id=2054584455]
+[ext_resource type="FontFile" uid="uid://b4ev6t8j5l8fr" path="res://MeowScript-Regular.ttf" id="1_ig7tw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
+font = ExtResource("1_ig7tw")
+font_size = 64
+outline_size = 8
+outline_color = Color(0.16, 0.16, 0.16, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ig7tw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0xm2m"]
+resource_name = "animation"
+length = 1.5999999999999999
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.7, 1, 1.3, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.90000004, 0, 1), Color(0, 0.6833334, 1, 1), Color(1, 0.17000002, 0.90316653, 1), Color(0.30700004, 1, 0.23000002, 1), Color(1, 0.6106667, 0.26999998, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2yge"]
+_data = {
+&"RESET": SubResource("Animation_ig7tw"),
+&"animation": SubResource("Animation_0xm2m")
+}
+
+[node name="TitleScreen" type="Node3D" unique_id=2054584455]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=968181101]
+current = true
+fov = 107.5
+
+[node name="TitleUI" type="CanvasLayer" parent="." unique_id=919366566]
+
+[node name="Title" type="Label" parent="TitleUI" unique_id=600639912]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 804.0
+offset_bottom = 102.0
+text = "Gavin's Fantastically Fun Adventure"
+label_settings = SubResource("LabelSettings_ig7tw")
+
+[node name="TitleAnimation" type="AnimationPlayer" parent="TitleUI/Title" unique_id=588303560]
+libraries/ = SubResource("AnimationLibrary_h2yge")
+autoplay = &"animation"
