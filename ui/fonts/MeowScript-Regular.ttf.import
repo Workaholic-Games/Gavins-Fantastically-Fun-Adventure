@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b4ev6t8j5l8fr"
-path="res://.godot/imported/MeowScript-Regular.ttf-72647f1044b2c42564a2dd4a3d9ea3a2.fontdata"
+path="res://.godot/imported/MeowScript-Regular.ttf-ed8f4726bd2d720859e6422dd5cdcee8.fontdata"
 
 [deps]
 
-source_file="res://MeowScript-Regular.ttf"
-dest_files=["res://.godot/imported/MeowScript-Regular.ttf-72647f1044b2c42564a2dd4a3d9ea3a2.fontdata"]
+source_file="res://ui/fonts/MeowScript-Regular.ttf"
+dest_files=["res://.godot/imported/MeowScript-Regular.ttf-ed8f4726bd2d720859e6422dd5cdcee8.fontdata"]
 
 [params]
 

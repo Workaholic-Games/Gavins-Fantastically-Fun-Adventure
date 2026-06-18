@@ -13,12 +13,32 @@ config_version=5
 config/name="GFFA"
 run/main_scene="uid://b55itjr1rb1ve"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://dqoi672b2ejkn"
+config/icon="uid://cewyp1yusje8"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://branding/": "yellow",
+"res://entites/": "blue",
+"res://levels/": "orange",
+"res://ui/": "purple",
+"res://ui/fonts/": "gray"
+}
+
+[gui]
+
+theme/custom="uid://1jf0tq88femj"
+theme/custom_font="uid://vjp43may8i6v"
 
 [input]
 

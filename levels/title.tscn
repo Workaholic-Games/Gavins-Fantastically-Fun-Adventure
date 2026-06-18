@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b55itjr1rb1ve"]
 
-[ext_resource type="FontFile" uid="uid://b4ev6t8j5l8fr" path="res://MeowScript-Regular.ttf" id="1_ig7tw"]
+[ext_resource type="FontFile" uid="uid://b4ev6t8j5l8fr" path="res://ui/fonts/MeowScript-Regular.ttf" id="1_0byv1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ig7tw"]
-font = ExtResource("1_ig7tw")
+font = ExtResource("1_0byv1")
 font_size = 64
 outline_size = 8
 outline_color = Color(0.16, 0.16, 0.16, 1)
@@ -27,7 +27,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0xm2m"]
 resource_name = "animation"
-length = 1.5999999999999999
+length = 1.6
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
@@ -49,6 +49,8 @@ _data = {
 &"animation": SubResource("Animation_0xm2m")
 }
 
+[sub_resource type="Environment" id="Environment_0hn6x"]
+
 [node name="TitleScreen" type="Node3D" unique_id=2054584455]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=968181101]
@@ -68,3 +70,6 @@ label_settings = SubResource("LabelSettings_ig7tw")
 [node name="TitleAnimation" type="AnimationPlayer" parent="TitleUI/Title" unique_id=588303560]
 libraries/ = SubResource("AnimationLibrary_h2yge")
 autoplay = &"animation"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=207077378]
+environment = SubResource("Environment_0hn6x")

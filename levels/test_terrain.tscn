@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0k1mjuhes7df"]
 
-[ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://player.tscn" id="1_vlnrc"]
+[ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entites/player/player.tscn" id="1_vlnrc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_70v8n"]
 
