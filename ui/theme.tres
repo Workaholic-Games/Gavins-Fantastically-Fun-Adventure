@@ -1,3 +1,20 @@
 [gd_resource type="Theme" format=3 uid="uid://1jf0tq88femj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqugq"]
+content_margin_left = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_denks"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0byv1"]
+content_margin_left = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [resource]
+TitleButton/base_type = &"Button"
+TitleButton/constants/outline_size = 12
+TitleButton/styles/focus = null
+TitleButton/styles/hover = SubResource("StyleBoxFlat_rqugq")
+TitleButton/styles/normal = SubResource("StyleBoxFlat_denks")
+TitleButton/styles/pressed = SubResource("StyleBoxFlat_0byv1")
