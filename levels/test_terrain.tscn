@@ -18,9 +18,9 @@ sky = SubResource("Sky_vlnrc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92532456, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=701287470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9069443, 0.3760376, -58.739304)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7918167, 0.3760376, -45.69319)
 use_collision = true
-size = Vector3(177.50641, 0.2479248, 172.47495)
+size = Vector3(165.27615, 0.2479248, 172.47495)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1070531705]
 environment = SubResource("Environment_q3t11")
@@ -33,7 +33,7 @@ texture_filter = 0
 texture = ExtResource("2_0tt70")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Sprite3D" unique_id=1799227233]
-transform = Transform3D(1.0000002, 5.1335247e-09, 1.9609633e-08, 3.3306786e-09, 0.90593874, 0.4234098, 3.572317e-09, -0.42340937, 0.90593857, 0, 0, 0)
+transform = Transform3D(1.0000002, 6.8373396e-10, 1.838552e-08, 8.253161e-09, 0.8157236, 0.5784426, 1.3444135e-09, -0.57844234, 0.8157234, 0, 0, 0)
 spot_range = 743.345
 spot_attenuation = -2.15
-spot_angle = 9.35
+spot_angle = 10.0
