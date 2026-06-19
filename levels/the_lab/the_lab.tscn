@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entities/player/player.tscn" id="1_w7muf"]
 [ext_resource type="MeshLibrary" uid="uid://bosip1vjwlu0x" path="res://levels/the_lab/assets/lab.meshlib" id="2_w7muf"]
 [ext_resource type="PackedScene" uid="uid://cm3d23j0oj0q8" path="res://entities/box/box.tscn" id="3_3vrfh"]
+[ext_resource type="PackedScene" uid="uid://baq3ki6w1544a" path="res://ui/inventory/inventory_item.tscn" id="4_kfj4g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7muf"]
 albedo_color = Color(0.45, 0.45, 0.45, 1)
@@ -44,7 +45,6 @@ tonemap_mode = 2
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
-glow_enabled = true
 glow_normalized = true
 glow_bloom = 1.0
 volumetric_fog_enabled = true
@@ -211,8 +211,62 @@ light_color = Color(0.99833333, 1, 0.98, 1)
 shadow_enabled = true
 omni_range = 15.0
 
-[node name="Box" parent="." unique_id=1174204307 instance=ExtResource("3_3vrfh")]
+[node name="Box" parent="." unique_id=1174204307 groups=["Interactable"] instance=ExtResource("3_3vrfh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.23205, 2.043583, -3.0308008)
+
+[node name="Inventory" type="CanvasLayer" parent="Box" unique_id=828403649]
+visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Box/Inventory" unique_id=2019628822]
+offset_left = 128.0
+offset_top = 580.0
+offset_right = 722.0
+offset_bottom = 656.0
+theme_override_constants/separation = -2
+
+[node name="Slot1" parent="Box/Inventory/HBoxContainer" unique_id=1117790014 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot2" parent="Box/Inventory/HBoxContainer" unique_id=1005722987 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot3" parent="Box/Inventory/HBoxContainer" unique_id=890040555 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot4" parent="Box/Inventory/HBoxContainer" unique_id=1105716856 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot5" parent="Box/Inventory/HBoxContainer" unique_id=1493509785 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot6" parent="Box/Inventory/HBoxContainer" unique_id=1323571228 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot7" parent="Box/Inventory/HBoxContainer" unique_id=705884615 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
+
+[node name="Slot8" parent="Box/Inventory/HBoxContainer" unique_id=1973953663 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_kfj4g")]
+layout_mode = 2
+item_name = "Sad Sun"
+canvas_layer = NodePath("../..")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891323000]
 environment = SubResource("Environment_cig4a")
+
+[node name="Box2" parent="." unique_id=1733986933 instance=ExtResource("3_3vrfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8683448, 1.2700238, -8.0257435)
+has_inventory = false

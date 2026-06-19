@@ -1,11 +1,11 @@
 [gd_scene format=4 uid="uid://cm3d23j0oj0q8"]
 
-[ext_resource type="Script" uid="uid://ctg85dx1enjdn" path="res://entities/box/box.gd" id="1_3skxh"]
+[ext_resource type="Script" uid="uid://ctg85dx1enjdn" path="res://entities/box/interact.gd" id="1_3skxh"]
 [ext_resource type="Material" uid="uid://bkhvbpmefvhdk" path="res://entities/box/box.tres" id="1_ybdpe"]
 [ext_resource type="Shader" uid="uid://dp084t50s0o5y" path="res://entities/outline.gdshader" id="2_m6xoe"]
-[ext_resource type="PackedScene" uid="uid://baq3ki6w1544a" path="res://ui/inventory/inventory_item.tscn" id="4_ct2mp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8aypw"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_m6xoe")
 shader_parameter/scale = 4.0
@@ -107,7 +107,7 @@ _data = {
 &"outline": SubResource("Animation_m6xoe")
 }
 
-[node name="Box" type="StaticBody3D" unique_id=1174204307 groups=["Interactable"]]
+[node name="Box" type="StaticBody3D" unique_id=1174204307]
 script = ExtResource("1_3skxh")
 
 [node name="Cube" type="MeshInstance3D" parent="." unique_id=372421450]
@@ -129,53 +129,3 @@ font_size = 64
 
 [node name="Outline" type="AnimationPlayer" parent="." unique_id=405371073]
 libraries/ = SubResource("AnimationLibrary_8aypw")
-
-[node name="Inventory" type="CanvasLayer" parent="." unique_id=1970848289]
-visible = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Inventory" unique_id=1617375806]
-offset_left = 128.0
-offset_top = 580.0
-offset_right = 722.0
-offset_bottom = 656.0
-theme_override_constants/separation = -2
-
-[node name="Slot1" parent="Inventory/HBoxContainer" unique_id=1117790014 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot2" parent="Inventory/HBoxContainer" unique_id=1487337399 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot3" parent="Inventory/HBoxContainer" unique_id=1107809422 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot4" parent="Inventory/HBoxContainer" unique_id=1544769142 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot5" parent="Inventory/HBoxContainer" unique_id=1127174003 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot6" parent="Inventory/HBoxContainer" unique_id=393933412 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot7" parent="Inventory/HBoxContainer" unique_id=193691580 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")
-
-[node name="Slot8" parent="Inventory/HBoxContainer" unique_id=303321166 node_paths=PackedStringArray("canvas_layer") instance=ExtResource("4_ct2mp")]
-layout_mode = 2
-item_name = "Sad Sun"
-canvas_layer = NodePath("../..")

@@ -20,7 +20,7 @@ func _on_fov_value_changed(value: float) -> void:
 func _on_back_pressed() -> void:
 	hide()
 	if player:
-		player.paused = false
+		Autoload.paused = false
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if title:
 		title.show()

@@ -2,12 +2,13 @@ extends CharacterBody3D
 @onready var camera : Camera3D = $Camera3D
 var look_dir : Vector2
 var interacting_with : Node3D
+var inventory_open : bool = false
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 
-
+	
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -35,7 +36,16 @@ func _input(event: InputEvent) -> void:
 				Autoload.paused = true
 			
 			interacting_with.interact()
-	
+	if Input.is_action_just_pressed("inventory"):
+		inventory_open = !inventory_open
+		Autoload.paused = !Autoload.paused
+		if inventory_open:
+			$UI/Inventory.show()
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			$UI/Inventory.hide()
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
 	if event is InputEventMouseMotion and Autoload.paused == false: 
 		look_dir = event.relative * 0.01
 	
