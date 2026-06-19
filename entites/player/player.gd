@@ -1,7 +1,6 @@
 extends CharacterBody3D
 @onready var camera : Camera3D = $Camera3D
 var look_dir : Vector2
-var camera_sensitivity : int = 15 
 var paused : bool = false
 
 const SPEED = 5.0
@@ -29,13 +28,14 @@ func _input(event: InputEvent) -> void:
 		paused = !paused
 		if paused == true:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+			$Options.show()
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+			$Options.hide()
 func rotate_camera(delta: float, sensitivity_modifier : float = 1.0):
 	if paused == false:
-		rotation.y -= look_dir.x * camera_sensitivity * delta
-		camera.rotation.x = clamp(camera.rotation.x - look_dir.y * camera_sensitivity * sensitivity_modifier * delta, -1.5, 1.5)
+		rotation.y -= look_dir.x * Global.sensitivity * delta
+		camera.rotation.x = clamp(camera.rotation.x - look_dir.y * Global.sensitivity * sensitivity_modifier * delta, -1.5, 1.5)
 		look_dir = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
@@ -60,4 +60,4 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	rotate_camera(delta)
-	
+	$Camera3D.fov = Global.fov

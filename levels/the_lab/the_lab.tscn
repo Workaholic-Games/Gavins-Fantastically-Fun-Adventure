@@ -52,7 +52,7 @@ volumetric_fog_density = 0.01
 [node name="TheLab" type="Node3D" unique_id=628838743]
 
 [node name="Player" parent="." unique_id=2128073826 instance=ExtResource("1_w7muf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.231997, 1.9438629, 5.021843)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.561867, 1.9438629, 5.021843)
 
 [node name="GridMap" type="GridMap" parent="." unique_id=2102417431]
 mesh_library = ExtResource("2_w7muf")
