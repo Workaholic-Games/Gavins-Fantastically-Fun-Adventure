@@ -20,5 +20,6 @@ func add_item(item_name : String):
 
 
 func description(item : String):
+	$"../RichTextLabel".show()
 	match item:
 		"Sad Sun": $"../RichTextLabel".text = "very sad sun indeed"

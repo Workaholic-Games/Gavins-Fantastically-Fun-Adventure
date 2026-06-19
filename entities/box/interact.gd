@@ -1,18 +1,25 @@
 extends StaticBody3D
-@export var has_inventory : bool = true
+@export var type : String
 var played : bool = false
 var inventory_opened : bool = false
 
 
-
 func interact():
-	if inventory_opened == true:
-		$Inventory.show()
-	else:
-		$Inventory.hide()
+	match type:
 		
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		Autoload.paused = false
+		"scaryhead": 
+			if Autoload.inventory.has("Eyes"):
+				pass
+			else:
+				$Dialogue/Label.text = "It's missing something..."
+		"container":
+			if inventory_opened == true:
+				$Inventory.show()
+			else:
+				$Inventory.hide()
+				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+				Autoload.paused = false
+
 
 func outline():
 	if played == false:

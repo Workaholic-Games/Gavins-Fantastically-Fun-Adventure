@@ -91,6 +91,7 @@ inventory = NodePath("..")
 canvas_layer = NodePath("../../..")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Inventory" unique_id=1720711764]
+visible = false
 layout_mode = 0
 offset_left = 722.0
 offset_top = 64.0
