@@ -5,7 +5,7 @@ extends CanvasLayer
 @export var cursor : Sprite2D
 
 func _on_sensitivity_value_changed(value: float) -> void:
-	Global.sensitivity = value
+	Autoload.sensitivity = value
 
 func _on_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, value)
@@ -15,7 +15,7 @@ func _on_volume_value_changed(value: float) -> void:
 		AudioServer.set_bus_mute(0, false)
 
 func _on_fov_value_changed(value: float) -> void:
-	Global.fov = value
+	Autoload.fov = value
 
 func _on_back_pressed() -> void:
 	hide()

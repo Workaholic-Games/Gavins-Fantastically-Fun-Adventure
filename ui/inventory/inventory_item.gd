@@ -3,6 +3,7 @@ class_name drag_drop_cell
 signal dragged(from: Vector2i, to: Vector2i)
 @export var item_name : String
 @export var inventory : Control
+@export var canvas_layer : CanvasLayer
 var grid_position : Vector2i
 
 
@@ -19,6 +20,7 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 	preview.global_position -= Vector2(32, 32)
 	preview.self_modulate = Color(1.0, 1.0, 1.0, 0.784)
 	preview.z_index = 10
+	
 	set_drag_preview(control)
 	# $border.visible = false
 	
@@ -26,7 +28,10 @@ func _get_drag_data(_at_position: Vector2) -> Variant:
 
 func _can_drop_data(_at_position: Vector2, data: Variant) -> bool:
 	if not data is drag_drop_cell or data == self:
+		canvas_layer.layer = 2
 		return false
+	
+	canvas_layer.layer = 1
 	
 	#grab_focus()
 	return true
@@ -38,6 +43,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	icon = data.icon
 	item_name = data.item_name
 	emit_signal("visibility_changed")
+	
 	
 	data.icon = temp
 	data.item_name = temp_type

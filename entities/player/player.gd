@@ -14,10 +14,10 @@ func _ready() -> void:
 func _notification(what):
 	match what:
 		NOTIFICATION_APPLICATION_FOCUS_IN:
-			Global.paused = false
+			Autoload.paused = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		NOTIFICATION_APPLICATION_FOCUS_OUT:
-			Global.paused = true
+			Autoload.paused = true
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _input(event: InputEvent) -> void:
@@ -26,16 +26,22 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			
 			if interacting_with.has_inventory == true:
-				$UI/Inventory.show()
-				Global.paused = true
+				interacting_with.inventory_opened = !interacting_with.inventory_opened
+				if interacting_with.inventory_opened == true:
+					$UI/Inventory.show()
+				else:
+					$UI/Inventory.hide()
+				
+				Autoload.paused = true
+			
 			interacting_with.interact()
 	
-	if event is InputEventMouseMotion and Global.paused == false: 
+	if event is InputEventMouseMotion and Autoload.paused == false: 
 		look_dir = event.relative * 0.01
 	
 	if Input.is_action_just_pressed("pause"):
-		Global.paused = !Global.paused
-		if Global.paused == true:
+		Autoload.paused = !Autoload.paused
+		if Autoload.paused == true:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			$Options.show()
 			$UI/Crosshair.hide()
@@ -46,17 +52,18 @@ func _input(event: InputEvent) -> void:
 
 
 
+
 func rotate_camera(delta: float, sensitivity_modifier : float = 1.0):
-	if Global.paused == false:
-		rotation.y -= look_dir.x * Global.sensitivity * delta
-		camera.rotation.x = clamp(camera.rotation.x - look_dir.y * Global.sensitivity * sensitivity_modifier * delta, -1.5, 1.5)
+	if Autoload.paused == false:
+		rotation.y -= look_dir.x * Autoload.sensitivity * delta
+		camera.rotation.x = clamp(camera.rotation.x - look_dir.y * Autoload.sensitivity * sensitivity_modifier * delta, -1.5, 1.5)
 		look_dir = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -74,7 +81,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	rotate_camera(delta)
-	$Camera3D.fov = Global.fov
+	$Camera3D.fov = Autoload.fov
 
 
 func _on_interaction_range_body_entered(body: Node3D) -> void:
