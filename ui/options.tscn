@@ -132,6 +132,19 @@ text = "Right"
 layout_mode = 2
 action = "right"
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=1504009847]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=915241287]
+layout_mode = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Interact"
+
+[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer5" unique_id=1916604066 instance=ExtResource("2_usno6")]
+layout_mode = 2
+action = "interact"
+
 [connection signal="value_changed" from="VBoxContainer/FOV Slider" to="." method="_on_fov_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Sensitivity Slider" to="." method="_on_sensitivity_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Volume Slider" to="." method="_on_volume_value_changed"]

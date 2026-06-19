@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://enylp8gy2fn5"]
 
-[ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entites/player/player.tscn" id="1_w7muf"]
+[ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entities/player/player.tscn" id="1_w7muf"]
 [ext_resource type="MeshLibrary" uid="uid://bosip1vjwlu0x" path="res://levels/the_lab/assets/lab.meshlib" id="2_w7muf"]
-[ext_resource type="PackedScene" uid="uid://cm3d23j0oj0q8" path="res://entites/box/box.tscn" id="3_3vrfh"]
+[ext_resource type="PackedScene" uid="uid://cm3d23j0oj0q8" path="res://entities/box/box.tscn" id="3_3vrfh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7muf"]
 albedo_color = Color(0.45, 0.45, 0.45, 1)

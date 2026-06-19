@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://cm3d23j0oj0q8"]
 
-[ext_resource type="Script" uid="uid://ctg85dx1enjdn" path="res://entites/box/box.gd" id="1_3skxh"]
+[ext_resource type="Script" uid="uid://ctg85dx1enjdn" path="res://entities/box/box.gd" id="1_3skxh"]
 [ext_resource type="Material" uid="uid://bkhvbpmefvhdk" path="res://levels/the_lab/assets/box.tres" id="1_ybdpe"]
-[ext_resource type="Shader" uid="uid://dp084t50s0o5y" path="res://entites/outline.gdshader" id="2_m6xoe"]
+[ext_resource type="Shader" uid="uid://dp084t50s0o5y" path="res://entities/outline.gdshader" id="2_m6xoe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8aypw"]
 render_priority = 0
@@ -67,7 +67,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_xc21v"]
 resource_name = "no_outline"
-length = 0.19999999999999998
+length = 0.2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -84,7 +84,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_m6xoe"]
 resource_name = "outline"
-length = 0.19999999999999998
+length = 0.2
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
