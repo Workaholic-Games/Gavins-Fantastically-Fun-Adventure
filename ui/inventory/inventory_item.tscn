@@ -11,3 +11,5 @@ theme_type_variation = &"InventorySlot"
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("1_wiepw")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

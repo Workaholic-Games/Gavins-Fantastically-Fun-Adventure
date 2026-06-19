@@ -17,3 +17,8 @@ func add_item(item_name : String):
 			slot.item_name = item_name
 			slot.icon = item_icons[item_name]
 			return
+
+
+func description(item : String):
+	match item:
+		"Sad Sun": $"../RichTextLabel".text = "very sad sun indeed"

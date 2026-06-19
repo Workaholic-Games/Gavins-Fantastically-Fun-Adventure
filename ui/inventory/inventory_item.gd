@@ -2,6 +2,7 @@ extends Button
 class_name drag_drop_cell 
 signal dragged(from: Vector2i, to: Vector2i)
 @export var item_name : String
+@export var inventory : Control
 var grid_position : Vector2i
 
 
@@ -42,3 +43,7 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 	data.item_name = temp_type
 	data.emit_signal("visibility_changed")
 	dragged.emit(data.grid_position, self.grid_position)
+
+
+func _on_pressed() -> void:
+	inventory.description(item_name)
