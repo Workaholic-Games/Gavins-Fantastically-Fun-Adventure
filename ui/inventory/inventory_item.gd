@@ -46,4 +46,5 @@ func _drop_data(_at_position: Vector2, data: Variant) -> void:
 
 
 func _on_pressed() -> void:
-	inventory.description(item_name)
+	if inventory:
+		inventory.description(item_name)

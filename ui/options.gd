@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @export var player : CharacterBody3D
 @export var title : CanvasLayer
+@export var cursor : Sprite2D
 
 func _on_sensitivity_value_changed(value: float) -> void:
 	Global.sensitivity = value
@@ -23,3 +24,5 @@ func _on_back_pressed() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if title:
 		title.show()
+	if cursor:
+		cursor.show()

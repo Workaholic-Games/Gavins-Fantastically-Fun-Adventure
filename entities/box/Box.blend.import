@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://wk5rbkehuef2"
-path="res://.godot/imported/Box.blend-d36bbd0f42b17e6ed3dfa45df2f18424.scn"
+path="res://.godot/imported/Box.blend-23b78a4b5f76406adbad11d342248ab2.scn"
 
 [deps]
 
-source_file="res://levels/the_lab/assets/Box.blend"
-dest_files=["res://.godot/imported/Box.blend-d36bbd0f42b17e6ed3dfa45df2f18424.scn"]
+source_file="res://entities/box/Box.blend"
+dest_files=["res://.godot/imported/Box.blend-23b78a4b5f76406adbad11d342248ab2.scn"]
 
 [params]
 
@@ -43,7 +43,7 @@ _subresources={
 "materials": {
 "Box": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://levels/the_lab/assets/box.tres",
+"use_external/fallback_path": "res://entities/box/box.tres",
 "use_external/path": "uid://bkhvbpmefvhdk"
 }
 }

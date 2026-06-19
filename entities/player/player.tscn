@@ -31,6 +31,7 @@ shape = SubResource("CapsuleShape3D_q3t11")
 visible = false
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=777106384]
+layer = 2
 
 [node name="Inventory" type="GridContainer" parent="UI" unique_id=504430242]
 visible = false
@@ -88,9 +89,10 @@ position = Vector2(640, 360)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_3u14a")
 
-[node name="Options" parent="." unique_id=362301809 node_paths=PackedStringArray("player") instance=ExtResource("4_y1j2n")]
+[node name="Options" parent="." unique_id=362301809 node_paths=PackedStringArray("player", "cursor") instance=ExtResource("4_y1j2n")]
 visible = false
 player = NodePath("..")
+cursor = NodePath("../UI/Crosshair")
 
 [connection signal="body_entered" from="Camera3D/InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="Camera3D/InteractionRange" to="." method="_on_interaction_range_body_exited"]

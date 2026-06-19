@@ -1,8 +1,18 @@
 extends StaticBody3D
+@export var has_inventory : bool = true
 var played : bool = false
+var inventory_opened : bool = false
+
+
 
 func interact():
-	print("HELLO I AM A BOX")
+	inventory_opened = !inventory_opened
+	if inventory_opened == true:
+		$Inventory.show()
+	else:
+		$Inventory.hide()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		Global.paused = false
 
 func outline():
 	if played == false:
