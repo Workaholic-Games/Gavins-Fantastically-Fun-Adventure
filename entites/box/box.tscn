@@ -1,0 +1,130 @@
+[gd_scene format=4 uid="uid://cm3d23j0oj0q8"]
+
+[ext_resource type="Script" uid="uid://ctg85dx1enjdn" path="res://entites/box/box.gd" id="1_3skxh"]
+[ext_resource type="Material" uid="uid://bkhvbpmefvhdk" path="res://levels/the_lab/assets/box.tres" id="1_ybdpe"]
+[ext_resource type="Shader" uid="uid://dp084t50s0o5y" path="res://entites/outline.gdshader" id="2_m6xoe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8aypw"]
+render_priority = 0
+shader = ExtResource("2_m6xoe")
+shader_parameter/scale = 4.0
+shader_parameter/outline_spread = 1.0
+shader_parameter/_Color = Color(0, 1, 0, 0)
+shader_parameter/_DepthNormalThreshold = 0.1
+shader_parameter/_DepthNormalThresholdScale = 8.0
+shader_parameter/_DepthThreshold = 8.0
+shader_parameter/_NormalThreshold = 8.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rwepw"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Box",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_m3sdq"]
+resource_name = "Box_Cube_001"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray("VFWqqgAA//8AAKqqVFX//1RVVFUAAKmqAABVVVRVqaqpqqqqVVX//1VVqqqpqv7/qapUVVVVqapVVVVVqqqpqlRVVFUAAAAAVFUAAAAAVVWqqlRVVVUAAKmqAABVVVRV"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": ExtResource("1_ybdpe"),
+"name": "Box",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAABU1f//AAD//1TV//8AAAAAVNUAAAAA//9U1f////8AAFTVAAD/////VNUAAP//AABU1f///////1TVVFWqqlRVqqpUVaqqVFWqqv8//7//P/+//z//v/8//7+qqlRVqqpUVaqqVFWqqlRV/3//f/9//3//f/9//3//f1RVVFVUVVRVVFVUVVRVVFVU1aoqVNWqKlTVqipU1aoq")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rwepw")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21ket"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="Animation" id="Animation_8aypw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xc21v"]
+resource_name = "no_outline"
+length = 0.19999999999999998
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m6xoe"]
+resource_name = "outline"
+length = 0.19999999999999998
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8aypw"]
+_data = {
+&"RESET": SubResource("Animation_8aypw"),
+&"no_outline": SubResource("Animation_xc21v"),
+&"outline": SubResource("Animation_m6xoe")
+}
+
+[node name="Box" type="StaticBody3D" unique_id=1174204307 groups=["Interactable"]]
+script = ExtResource("1_3skxh")
+
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=372421450]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+material_overlay = SubResource("ShaderMaterial_8aypw")
+mesh = SubResource("ArrayMesh_m3sdq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1377298251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1035156e-05, 0, 0)
+shape = SubResource("BoxShape3D_21ket")
+
+[node name="InteractButton" type="Label3D" parent="." unique_id=1846634200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5759095, 0)
+visible = false
+billboard = 2
+texture_filter = 0
+text = "E"
+font_size = 64
+
+[node name="Outline" type="AnimationPlayer" parent="." unique_id=405371073]
+libraries/ = SubResource("AnimationLibrary_8aypw")

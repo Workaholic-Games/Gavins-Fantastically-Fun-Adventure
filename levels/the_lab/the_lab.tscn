@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lt37uux2d5p5" path="res://entites/player/player.tscn" id="1_w7muf"]
 [ext_resource type="MeshLibrary" uid="uid://bosip1vjwlu0x" path="res://levels/the_lab/assets/lab.meshlib" id="2_w7muf"]
-[ext_resource type="PackedScene" uid="uid://wk5rbkehuef2" path="res://levels/the_lab/assets/Chair.blend" id="3_3vrfh"]
+[ext_resource type="PackedScene" uid="uid://cm3d23j0oj0q8" path="res://entites/box/box.tscn" id="3_3vrfh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7muf"]
 albedo_color = Color(0.45, 0.45, 0.45, 1)
@@ -44,9 +44,6 @@ tonemap_mode = 2
 ssr_enabled = true
 ssao_enabled = true
 ssil_enabled = true
-glow_enabled = true
-glow_normalized = true
-glow_bloom = 1.0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 
@@ -211,8 +208,8 @@ light_color = Color(0.99833333, 1, 0.98, 1)
 shadow_enabled = true
 omni_range = 15.0
 
+[node name="Box" parent="." unique_id=1174204307 instance=ExtResource("3_3vrfh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.23205, 2.043583, -3.0308008)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891323000]
 environment = SubResource("Environment_cig4a")
-
-[node name="Chair" parent="." unique_id=256009789 instance=ExtResource("3_3vrfh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6782646, 1.4417334, -4.8433485)

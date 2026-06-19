@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://baq3ki6w1544a" path="res://ui/inventory/inventory_item.tscn" id="2_qevvu"]
 [ext_resource type="Script" uid="uid://lsr8x00vub17" path="res://entites/player/inventory.gd" id="2_y1j2n"]
 [ext_resource type="PackedScene" uid="uid://c3o1kmpvrsgo6" path="res://ui/options.tscn" id="4_y1j2n"]
+[ext_resource type="Texture2D" uid="uid://dhb5msevleni4" path="res://ui/crosshair.png" id="5_3u14a"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_0hn6x"]
+length = 4.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3t11"]
 
@@ -13,13 +17,23 @@ script = ExtResource("1_4flbx")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=417600391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4081557, 0)
 
+[node name="InteractionRange" type="Area3D" parent="Camera3D" unique_id=241642947]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/InteractionRange" unique_id=1447999654]
+shape = SubResource("SeparationRayShape3D_0hn6x")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=494137701]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8958616, 0)
 shape = SubResource("CapsuleShape3D_q3t11")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1914471320]
+visible = false
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=777106384]
 
 [node name="Inventory" type="GridContainer" parent="UI" unique_id=504430242]
+visible = false
 offset_left = 128.0
 offset_top = 64.0
 offset_right = 722.0
@@ -62,14 +76,21 @@ layout_mode = 2
 inventory = NodePath("..")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=1720711764]
+visible = false
 offset_left = 722.0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 656.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1914471320]
-visible = false
+[node name="Crosshair" type="Sprite2D" parent="UI" unique_id=1745028729]
+texture_filter = 2
+position = Vector2(640, 360)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_3u14a")
 
 [node name="Options" parent="." unique_id=362301809 node_paths=PackedStringArray("player") instance=ExtResource("4_y1j2n")]
 visible = false
 player = NodePath("..")
+
+[connection signal="body_entered" from="Camera3D/InteractionRange" to="." method="_on_interaction_range_body_entered"]
+[connection signal="body_exited" from="Camera3D/InteractionRange" to="." method="_on_interaction_range_body_exited"]

@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var camera : Camera3D = $Camera3D
 var look_dir : Vector2
 var paused : bool = false
+var interacting_with : Node3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -21,6 +22,11 @@ func _notification(what):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact"):
+		if interacting_with != null:
+			interacting_with.interact()
+	
+	
 	if event is InputEventMouseMotion: 
 		look_dir = event.relative * 0.01
 	
@@ -32,6 +38,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			$Options.hide()
+
 func rotate_camera(delta: float, sensitivity_modifier : float = 1.0):
 	if paused == false:
 		rotation.y -= look_dir.x * Global.sensitivity * delta
@@ -61,3 +68,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	rotate_camera(delta)
 	$Camera3D.fov = Global.fov
+
+
+func _on_interaction_range_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Interactable"):
+		body.outline()
+		interacting_with = body
+func _on_interaction_range_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Interactable"):
+		body.no_outline()
+		interacting_with = null
