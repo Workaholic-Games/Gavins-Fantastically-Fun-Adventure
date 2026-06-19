@@ -53,6 +53,10 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "uid://smhcs6n050rm"
 },
+"@MATERIAL:13": {
+"use_external/enabled": true,
+"use_external/path": "uid://dq21fx1ofivl1"
+},
 "@MATERIAL:2": {
 "use_external/enabled": true,
 "use_external/path": "uid://smhcs6n050rm"
