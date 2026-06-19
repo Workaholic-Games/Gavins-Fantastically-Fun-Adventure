@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bltq5hytbgphg"
-path="res://.godot/imported/light.blend-7505925287e95d9278881b3f4403a625.scn"
+uid="uid://dbpn6i5hgss0o"
+path="res://.godot/imported/small_room.blend-63965c9d57c4d00b2723f50bf2396310.scn"
 
 [deps]
 
-source_file="res://levels/light.blend"
-dest_files=["res://.godot/imported/light.blend-7505925287e95d9278881b3f4403a625.scn"]
+source_file="res://levels/the_lab/assets/small_room.blend"
+dest_files=["res://.godot/imported/small_room.blend-63965c9d57c4d00b2723f50bf2396310.scn"]
 
 [params]
 
@@ -39,13 +39,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Area": {
-"node/node_type": "SpotLight3D"
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

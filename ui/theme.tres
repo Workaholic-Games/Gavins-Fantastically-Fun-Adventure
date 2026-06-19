@@ -2,27 +2,55 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqtc0"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf26r"]
 bg_color = Color(0.14044756, 0.14044741, 0.14044744, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.08, 0.08, 0.08, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6lx7k"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u14a"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqugq"]
 content_margin_left = 20.0
@@ -41,6 +69,8 @@ InventorySlot/styles/focus = null
 InventorySlot/styles/hover = SubResource("StyleBoxFlat_iqtc0")
 InventorySlot/styles/normal = SubResource("StyleBoxFlat_jf26r")
 InventorySlot/styles/pressed = SubResource("StyleBoxFlat_6lx7k")
+RichTextLabel/font_sizes/normal_font_size = 32
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_3u14a")
 TitleButton/base_type = &"Button"
 TitleButton/colors/font_color = Color(1, 1, 1, 1)
 TitleButton/colors/font_hover_color = Color(0.7581918, 0.7581918, 0.7581917, 1)

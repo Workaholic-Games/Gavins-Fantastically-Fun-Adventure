@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ccc3ryvmr5jvx"
-path="res://.godot/imported/big_room.blend-8a54abeeaee6cb8d451d026c18e33557.scn"
+path="res://.godot/imported/big_room.blend-626d6c37767066ff03fde48b0d4760e3.scn"
 
 [deps]
 
-source_file="res://levels/big_room.blend"
-dest_files=["res://.godot/imported/big_room.blend-8a54abeeaee6cb8d451d026c18e33557.scn"]
+source_file="res://levels/the_lab/assets/big_room.blend"
+dest_files=["res://.godot/imported/big_room.blend-626d6c37767066ff03fde48b0d4760e3.scn"]
 
 [params]
 

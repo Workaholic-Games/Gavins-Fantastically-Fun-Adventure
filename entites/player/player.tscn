@@ -19,10 +19,10 @@ shape = SubResource("CapsuleShape3D_q3t11")
 [node name="UI" type="CanvasLayer" parent="." unique_id=777106384]
 
 [node name="Inventory" type="GridContainer" parent="UI" unique_id=504430242]
-offset_left = 64.0
+offset_left = 128.0
 offset_top = 64.0
-offset_right = 576.0
-offset_bottom = 128.0
+offset_right = 722.0
+offset_bottom = 140.0
 theme_override_constants/h_separation = -2
 theme_override_constants/v_separation = -2
 columns = 8
@@ -61,7 +61,10 @@ layout_mode = 2
 inventory = NodePath("..")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=1720711764]
-offset_left = 578.0
+offset_left = 722.0
 offset_top = 64.0
-offset_right = 960.0
-offset_bottom = 512.0
+offset_right = 1152.0
+offset_bottom = 656.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1914471320]
+visible = false
