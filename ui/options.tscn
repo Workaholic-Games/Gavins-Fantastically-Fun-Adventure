@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c3o1kmpvrsgo6"]
+
+[ext_resource type="Script" uid="uid://pr8x2k7do4ld" path="res://ui/options.gd" id="1_ymcv4"]
+
+[node name="Options" type="CanvasLayer" unique_id=362301809]
+script = ExtResource("1_ymcv4")
+
+[node name="Label" type="Label" parent="." unique_id=1979263776]
+offset_left = 576.0
+offset_right = 758.0
+offset_bottom = 65.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+text = "Options"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1365216562]
+offset_left = 432.0
+offset_top = 112.0
+offset_right = 896.0
+offset_bottom = 640.0
+
+[node name="FOV" type="Label" parent="VBoxContainer" unique_id=935125159]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "FOV"
+horizontal_alignment = 1
+
+[node name="FOV Slider" type="HSlider" parent="VBoxContainer" unique_id=949195725]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.205, 1.205)
+offset_transform_visual_only = false
+min_value = 1.0
+max_value = 120.0
+value = 75.0
+
+[node name="Sensitivity" type="Label" parent="VBoxContainer" unique_id=1453552086]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Mouse Sensitivity"
+horizontal_alignment = 1
+
+[node name="Sensitivity Slider" type="HSlider" parent="VBoxContainer" unique_id=1143893453]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.205, 1.205)
+offset_transform_visual_only = false
+min_value = 0.1
+max_value = 30.0
+step = 0.5
+value = 15.1
+
+[node name="Volume" type="Label" parent="VBoxContainer" unique_id=379302031]
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="Volume Slider" type="HSlider" parent="VBoxContainer" unique_id=498933278]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1.205, 1.205)
+offset_transform_visual_only = false
+min_value = -20.0
+max_value = 20.0
+
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=1788840219]
+custom_maximum_size = Vector2(137.73, -1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(164.685, 10.34)
+offset_transform_visual_only = false
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 48
+text = "Back"
+
+[connection signal="value_changed" from="VBoxContainer/FOV Slider" to="." method="_on_fov_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Sensitivity Slider" to="." method="_on_sensitivity_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Volume Slider" to="." method="_on_volume_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

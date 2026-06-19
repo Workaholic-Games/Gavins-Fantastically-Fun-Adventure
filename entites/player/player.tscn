@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0dtii60b6v5p" path="res://entites/player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://baq3ki6w1544a" path="res://ui/inventory/inventory_item.tscn" id="2_qevvu"]
 [ext_resource type="Script" uid="uid://lsr8x00vub17" path="res://entites/player/inventory.gd" id="2_y1j2n"]
+[ext_resource type="PackedScene" uid="uid://c3o1kmpvrsgo6" path="res://ui/options.tscn" id="4_y1j2n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3t11"]
 
@@ -68,3 +69,7 @@ offset_bottom = 656.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1914471320]
 visible = false
+
+[node name="Options" parent="." unique_id=362301809 node_paths=PackedStringArray("player") instance=ExtResource("4_y1j2n")]
+visible = false
+player = NodePath("..")
