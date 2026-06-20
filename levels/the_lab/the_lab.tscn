@@ -43,17 +43,14 @@ size = Vector3(30.334045, 5.04834, 0.22596386)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o7j22"]
 data = PackedVector3Array(-15.167, 2.5242, 0.113, 15.167, 2.5242, 0.113, -15.167, -2.5242, 0.113, 15.167, 2.5242, 0.113, 15.167, -2.5242, 0.113, -15.167, -2.5242, 0.113, 15.167, 2.5242, -0.113, -15.167, 2.5242, -0.113, 15.167, -2.5242, -0.113, -15.167, 2.5242, -0.113, -15.167, -2.5242, -0.113, 15.167, -2.5242, -0.113, 15.167, 2.5242, 0.113, 15.167, 2.5242, -0.113, 15.167, -2.5242, 0.113, 15.167, 2.5242, -0.113, 15.167, -2.5242, -0.113, 15.167, -2.5242, 0.113, -15.167, 2.5242, -0.113, -15.167, 2.5242, 0.113, -15.167, -2.5242, -0.113, -15.167, 2.5242, 0.113, -15.167, -2.5242, 0.113, -15.167, -2.5242, -0.113, 15.167, 2.5242, 0.113, -15.167, 2.5242, 0.113, 15.167, 2.5242, -0.113, -15.167, 2.5242, 0.113, -15.167, 2.5242, -0.113, 15.167, 2.5242, -0.113, -15.167, -2.5242, 0.113, 15.167, -2.5242, 0.113, -15.167, -2.5242, -0.113, 15.167, -2.5242, 0.113, 15.167, -2.5242, -0.113, -15.167, -2.5242, -0.113)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8aypw"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjloe"]
 render_priority = 0
 shader = ExtResource("6_j447c")
-shader_parameter/scale = 10.0
-shader_parameter/outline_spread = 1.0
-shader_parameter/_Color = Color(0, 1, 0, 0)
-shader_parameter/_DepthNormalThreshold = 0.1
-shader_parameter/_DepthNormalThresholdScale = 0.8
-shader_parameter/_DepthThreshold = 8.0
-shader_parameter/_NormalThreshold = 8.0
+shader_parameter/thickness = 2.0
+shader_parameter/outline_color = Color(0, 1, 0, 0)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.1
+shader_parameter/edge_fade = 0.015
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bnxe"]
 resource_name = "Material"
@@ -103,7 +100,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -120,7 +117,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,7 +134,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -579,11 +576,12 @@ script = ExtResource("5_csah0")
 type = "scaryhead"
 
 [node name="Cube" type="MeshInstance3D" parent="Head/StaticBody3D" unique_id=11773405]
-material_overlay = SubResource("ShaderMaterial_8aypw")
+material_overlay = SubResource("ShaderMaterial_bjloe")
 mesh = SubResource("ArrayMesh_plnac")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/StaticBody3D" unique_id=827433123]
 shape = SubResource("ConcavePolygonShape3D_g0ry1")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="InteractButton" type="Label3D" parent="Head/StaticBody3D" unique_id=135298409]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0061597824, -0.20282912, 1.5275965)
@@ -617,23 +615,5 @@ mesh = SubResource("ArrayMesh_wumdn")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=891323000]
 environment = SubResource("Environment_cig4a")
 
-[node name="StaticBody3D" parent="." unique_id=2014513201 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, -36.10176)
-
-[node name="StaticBody3D2" parent="." unique_id=2086203230 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, -26.05153)
-
-[node name="StaticBody3D3" parent="." unique_id=1698015542 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, -16.00412)
-
-[node name="StaticBody3D4" parent="." unique_id=1078310706 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, -5.992877)
-
-[node name="StaticBody3D5" parent="." unique_id=1039588145 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, 3.9952307)
-
-[node name="StaticBody3D6" parent="." unique_id=2049448161 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.750988, 0.64669365, 14.028914)
-
-[node name="StaticBody3D7" parent="." unique_id=20599883 instance=ExtResource("8_bjloe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.466301, 0.6466939, -29.159119)
+[node name="Door" parent="." unique_id=2086203230 instance=ExtResource("8_bjloe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.60001, 0.6467558, -36.09494)

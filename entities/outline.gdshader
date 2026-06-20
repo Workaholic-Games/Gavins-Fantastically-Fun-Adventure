@@ -1,101 +1,67 @@
 shader_type spatial;
-render_mode unshaded;
+render_mode blend_mix, unshaded, cull_back;
 
-// pixel sampling radius
-uniform float scale = 1.0;
+uniform sampler2D depth_texture : hint_depth_texture;
+uniform float thickness : hint_range(0.5, 20.0, 0.1) = 2.0;
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 0.0);
+uniform int samples : hint_range(4, 32) = 4;
 
-// outline dilation after computation
-uniform float outline_spread = 1.0;
-
-uniform vec4 _Color : source_color = vec4(0.0, 1.0, 0.0, 1.0);
-
-uniform float _DepthNormalThreshold = 0.1;
-uniform float _DepthNormalThresholdScale = 3.;
-uniform float _DepthThreshold = 1.5;
-uniform float _NormalThreshold = 2.0;
-
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap, repeat_disable;
-uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap, repeat_disable;
-uniform sampler2D normal_roughness_texture : hint_normal_roughness_texture, repeat_disable;
+uniform float sensitivity : hint_range(0.01, 1.0, 0.01) = 0.1;
+uniform float edge_fade : hint_range(0.0, 0.1, 0.001) = 0.015;
 
 void fragment() {
-    float half_scale_floor = floor(scale * 0.5);
-    float half_scale_ceil = ceil(scale * 0.5);
-
-    vec2 texel_size = vec2(1.0) / vec2(textureSize(SCREEN_TEXTURE, 0));
-
-    // Compute UV coordinates
-    vec2 bottom_left_uv  = SCREEN_UV - vec2(texel_size.x, texel_size.y) * half_scale_floor;
-    vec2 top_right_uv    = SCREEN_UV + vec2(texel_size.x, texel_size.y) * half_scale_ceil;
-    vec2 bottom_right_uv = SCREEN_UV + vec2(texel_size.x * half_scale_ceil, -texel_size.y * half_scale_floor);
-    vec2 top_left_uv     = SCREEN_UV + vec2(-texel_size.x * half_scale_floor, texel_size.y * half_scale_ceil);
-
-    // Normals
-    vec3 normal0 = texture(normal_roughness_texture, bottom_left_uv).rgb;
-    vec3 normal1 = texture(normal_roughness_texture, top_right_uv).rgb;
-    vec3 normal2 = texture(normal_roughness_texture, bottom_right_uv).rgb;
-    vec3 normal3 = texture(normal_roughness_texture, top_left_uv).rgb;
-
-    // Depth 
-    float depth0 = texture(DEPTH_TEXTURE, bottom_left_uv).r;
-    float depth1 = texture(DEPTH_TEXTURE, top_right_uv).r;
-    float depth2 = texture(DEPTH_TEXTURE, bottom_right_uv).r;
-    float depth3 = texture(DEPTH_TEXTURE, top_left_uv).r;
-
-	vec3 viewNormal = normal0 * 2. - 1.;
-	float NdotV = 1. - dot(viewNormal, VIEW);
-
-	// Return a value in the 0...1 range depending on where NdotV lies
-	// between _DepthNormalThreshold and 1.
-	float normalThreshold01 = clamp(((NdotV - _DepthNormalThreshold) / (1. - _DepthNormalThreshold)),0.0,1.0);
-	// Scale the threshold, and add 1 so that it is in the range of 1..._NormalThresholdScale + 1.
-	float normalThreshold = normalThreshold01 * _DepthNormalThresholdScale + 1.;
-
-	float depthThreshold = _DepthThreshold * depth0 * normalThreshold;
-
-	float depthFiniteDifference0 = depth1 - depth0;
-	float depthFiniteDifference1 = depth3 - depth2;
-
-	float edgeDepth = sqrt(pow(depthFiniteDifference0, 2.) + pow(depthFiniteDifference1, 2.)) * 100.;
-	edgeDepth = edgeDepth > depthThreshold ? 1. : 0.;
-
-	vec3 normalFiniteDifference0 = normal1 - normal0;
-	vec3 normalFiniteDifference1 = normal3 - normal2;
-
-	float edgeNormal = sqrt(dot(normalFiniteDifference0, normalFiniteDifference0) + dot(normalFiniteDifference1, normalFiniteDifference1));
-				edgeNormal = edgeNormal > _NormalThreshold ? 1. : 0.;
-
-	float edge = max(edgeDepth, edgeNormal);
-
-	float dilated_edge = edge;
-
-	// Directional offsets for 4-neighbor dilation
-	vec2 offsets[4] = vec2[](
-	    vec2(texel_size.x, 0.0),
-	    vec2(-texel_size.x, 0.0),
-	    vec2(0.0, texel_size.y),
-	    vec2(0.0, -texel_size.y)
-	);
+	vec2 pixel_size = 1.0 / VIEWPORT_SIZE;
+	vec2 step_size = pixel_size * thickness;
 	
-	float thickness = outline_spread;
-	for (int i = 0; i < 4; i++) {
-	    vec2 offset_uv = SCREEN_UV + offsets[i] * thickness;
-
-	    float depth_n = texture(DEPTH_TEXTURE, offset_uv).r;
-	    vec3 normal_n = texture(normal_roughness_texture, offset_uv).rgb;
-
-	    float depth_diff = depth_n - depth0; 
-	    vec3 normal_diff = normal_n - normal0; 
-
-	    float edge_depth_n = (sqrt(depth_diff * depth_diff) * 100.0 > _DepthThreshold) ? 1.0 : 0.0;
-	    float edge_normal_n = (length(normal_diff) > _NormalThreshold) ? 1.0 : 0.0;
-
-	    dilated_edge = max(dilated_edge, max(edge_depth_n, edge_normal_n));
+	float angle_step = TAU / float(samples);
+	
+	vec3 avg_dx = vec3(0.0);
+	vec3 avg_dy = vec3(0.0);
+	
+	// Pre-calculate screen UV adjustments
+	vec2 screen_uv_normalized = SCREEN_UV * 2.0 - 1.0;
+	
+	// Sample in a circle around the pixel
+	for (int i = 0; i < samples; i++) {
+		float angle = float(i) * angle_step;
+		vec2 dir = vec2(cos(angle), sin(angle));
+		vec2 offset = dir * step_size;
+		
+		vec2 uv1 = SCREEN_UV + offset;
+		vec2 uv2 = SCREEN_UV - offset;
+		
+		float d1 = texture(depth_texture, uv1).r;
+		float d2 = texture(depth_texture, uv2).r;
+		
+		// Optimized inverse projection
+		vec2 uv1_norm = uv1 * 2.0 - 1.0;
+		vec2 uv2_norm = uv2 * 2.0 - 1.0;
+		
+		vec4 up1 = INV_PROJECTION_MATRIX * vec4(uv1_norm, d1, 1.0);
+		vec4 up2 = INV_PROJECTION_MATRIX * vec4(uv2_norm, d2, 1.0);
+		
+		// Combine division and difference calculation
+		vec3 diff = (up1.xyz / up1.w) - (up2.xyz / up2.w);
+		
+		// Accumulate weighted by direction
+		avg_dx += diff * dir.x;
+		avg_dy += diff * dir.y;
 	}
-
-	vec4 edgeColor = vec4(_Color.rgb, _Color.a * dilated_edge);
-
-	ALBEDO = mix(texture(SCREEN_TEXTURE,SCREEN_UV).rgb, edgeColor.rgb, edgeColor.a);
-	//ALBEDO = mix(vec3(0.0), edgeColor.rgb, edgeColor.a);
-
+	
+	// Combine normalization with inverse samples
+	float inv_samples = 1.0 / float(samples);
+	avg_dx *= inv_samples;
+	avg_dy *= inv_samples;
+	
+	// Edge detection
+	vec3 normal = normalize(cross(avg_dy, avg_dx));
+	float edge = 1.0 - smoothstep(sensitivity, sensitivity + 0.05, abs(dot(normal, VIEW)));
+	
+	// Optimized viewport edge fade
+	vec2 screen_center_dist = abs(SCREEN_UV - 0.5) * 2.0;
+	float max_dist = max(screen_center_dist.x, screen_center_dist.y);
+	float vignette = smoothstep(0.0, edge_fade * thickness, 1.0 - max_dist);
+	
+	ALBEDO = outline_color.rgb;
+	ALPHA = edge * vignette * outline_color.a;
 }

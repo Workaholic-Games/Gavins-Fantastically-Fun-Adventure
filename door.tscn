@@ -8,18 +8,6 @@
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_27y4x"]
 data = PackedVector3Array(0.09634417, 3.0422442, -0.097637266, -0.074304864, 3.0422442, 1.8975651, -0.074304864, 3.0422442, -0.097637266, 0.09634417, 3.0422442, -0.097637266, 0.09634417, 3.0422442, 1.8975651, -0.074304864, 3.0422442, 1.8975651, 0.09634417, -0.0077557564, 1.8975651, -0.074304864, 3.0422442, 1.8975651, 0.09634417, 3.0422442, 1.8975651, 0.09634417, -0.0077557564, 1.8975651, -0.074304864, -0.0077557564, 1.8975651, -0.074304864, 3.0422442, 1.8975651, -0.074304864, -0.0077557564, 1.8975651, -0.074304864, 3.0422442, -0.097637266, -0.074304864, 3.0422442, 1.8975651, -0.074304864, -0.0077557564, 1.8975651, -0.074304864, -0.0077557564, -0.097637266, -0.074304864, 3.0422442, -0.097637266, -0.074304864, -0.0077557564, -0.097637266, 0.09634417, -0.0077557564, 1.8975651, 0.09634417, -0.0077557564, -0.097637266, -0.074304864, -0.0077557564, -0.097637266, -0.074304864, -0.0077557564, 1.8975651, 0.09634417, -0.0077557564, 1.8975651, 0.09634417, -0.0077557564, -0.097637266, 0.09634417, 3.0422442, 1.8975651, 0.09634417, 3.0422442, -0.097637266, 0.09634417, -0.0077557564, -0.097637266, 0.09634417, -0.0077557564, 1.8975651, 0.09634417, 3.0422442, 1.8975651, -0.074304864, -0.0077557564, -0.097637266, 0.09634417, 3.0422442, -0.097637266, -0.074304864, 3.0422442, -0.097637266, -0.074304864, -0.0077557564, -0.097637266, 0.09634417, -0.0077557564, -0.097637266, 0.09634417, 3.0422442, -0.097637266)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8aypw"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("2_50cdl")
-shader_parameter/scale = 8.0
-shader_parameter/outline_spread = 1.0
-shader_parameter/_Color = Color(0, 1, 0, 0)
-shader_parameter/_DepthNormalThreshold = 0.1
-shader_parameter/_DepthNormalThresholdScale = 8.0
-shader_parameter/_DepthThreshold = 8.0
-shader_parameter/_NormalThreshold = 8.0
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_wp0l8"]
 _surfaces = [{
 "aabb": AABB(-0.074304864, -0.0077557564, -0.097637266, 0.17064904, 3.05, 1.9952024),
@@ -51,6 +39,15 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wp0l8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50cdl"]
+render_priority = 0
+shader = ExtResource("2_50cdl")
+shader_parameter/thickness = 3.000000037253
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.249999994412
+shader_parameter/edge_fade = 0.015
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_82n0l"]
 _surfaces = [{
@@ -92,7 +89,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("CollisionShape3D/Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -109,7 +106,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("CollisionShape3D/Cube_001:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +123,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("CollisionShape3D/Cube_001:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -143,26 +140,84 @@ _data = {
 &"outline": SubResource("Animation_m6xoe")
 }
 
-[node name="StaticBody3D" type="StaticBody3D" unique_id=2086203230 groups=["Interactable"]]
+[sub_resource type="Animation" id="Animation_50cdl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4xadh"]
+resource_name = "close"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y5njw"]
+resource_name = "open"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xadh"]
+_data = {
+&"RESET": SubResource("Animation_50cdl"),
+&"close": SubResource("Animation_4xadh"),
+&"open": SubResource("Animation_y5njw")
+}
+
+[node name="Door" type="StaticBody3D" unique_id=2086203230 groups=["Interactable"]]
 script = ExtResource("1_0phs7")
 type = "door"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=445560871]
 shape = SubResource("ConcavePolygonShape3D_27y4x")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
-[node name="Cube" type="MeshInstance3D" parent="." unique_id=129207986]
+[node name="Cube" type="MeshInstance3D" parent="CollisionShape3D" unique_id=129207986]
 transform = Transform3D(1, 0, 0, 0, 0.992, 0, 0, 0, 1, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_8aypw")
 mesh = SubResource("ArrayMesh_bfs63")
 
-[node name="Cube_001" type="MeshInstance3D" parent="Cube" unique_id=490062844]
-transform = Transform3D(1, 0, 0, 0, 1.0080645, 0, 0, 0, 1, 0, 0, 0)
+[node name="Cube_001" type="MeshInstance3D" parent="CollisionShape3D" unique_id=490062844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012284517, 0, 0)
+material_overlay = SubResource("ShaderMaterial_50cdl")
 mesh = SubResource("ArrayMesh_ps83h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cube/Cube_001" unique_id=2090335696]
+[node name="StaticBody3D" type="StaticBody3D" parent="CollisionShape3D/Cube_001" unique_id=2090335696]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Cube_001/StaticBody3D" unique_id=1352189453]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionShape3D/Cube_001/StaticBody3D" unique_id=1352189453]
 shape = SubResource("ConcavePolygonShape3D_r2aww")
+debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="InteractButton" type="Label3D" parent="." unique_id=1240644879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5759095, 0)
@@ -174,3 +229,6 @@ font_size = 64
 
 [node name="Outline" type="AnimationPlayer" parent="." unique_id=1382025049]
 libraries/ = SubResource("AnimationLibrary_0phs7")
+
+[node name="DoorAnimation" type="AnimationPlayer" parent="." unique_id=762807998]
+libraries/ = SubResource("AnimationLibrary_4xadh")

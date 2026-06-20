@@ -8,13 +8,11 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_m6xoe")
-shader_parameter/scale = 4.0
-shader_parameter/outline_spread = 1.0
-shader_parameter/_Color = Color(0, 1, 0, 0)
-shader_parameter/_DepthNormalThreshold = 0.1
-shader_parameter/_DepthNormalThresholdScale = 8.0
-shader_parameter/_DepthThreshold = 8.0
-shader_parameter/_NormalThreshold = 8.0
+shader_parameter/thickness = 2.0
+shader_parameter/outline_color = Color(0, 1, 0, 0)
+shader_parameter/samples = 4
+shader_parameter/sensitivity = 0.1
+shader_parameter/edge_fade = 0.015
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rwepw"]
 _surfaces = [{
@@ -56,7 +54,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -73,7 +71,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +88,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/_Color")
+tracks/0/path = NodePath("Cube:material_overlay:shader_parameter/outline_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -100,7 +98,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8aypw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mfoj8"]
 _data = {
 &"RESET": SubResource("Animation_8aypw"),
 &"no_outline": SubResource("Animation_xc21v"),
@@ -127,5 +125,5 @@ texture_filter = 0
 text = "E"
 font_size = 64
 
-[node name="Outline" type="AnimationPlayer" parent="." unique_id=405371073]
-libraries/ = SubResource("AnimationLibrary_8aypw")
+[node name="Outline" type="AnimationPlayer" parent="." unique_id=243224277]
+libraries/ = SubResource("AnimationLibrary_mfoj8")

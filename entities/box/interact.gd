@@ -27,13 +27,11 @@ func interact():
 				Autoload.paused = false
 		"door":
 			opened = !opened
-			var tween = create_tween()
-			if opened:
-				tween.tween_property(self, "rotation_degrees", Vector3(0, 90, 0), 0.5)
+			if opened == true:
+				$DoorAnimation.play("open")
 			else:
-				tween.tween_property(self, "rotation_degrees", Vector3(0, 0, 0), 0.5)
+				$DoorAnimation.play("close")
 
-			
 
 
 func outline():
