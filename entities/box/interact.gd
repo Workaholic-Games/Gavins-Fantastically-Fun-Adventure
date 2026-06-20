@@ -2,6 +2,7 @@ extends StaticBody3D
 @export var type : String
 var played : bool = false
 var inventory_opened : bool = false
+var opened : bool = false
 
 
 
@@ -24,6 +25,10 @@ func interact():
 				$Inventory.hide()
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				Autoload.paused = false
+		"door":
+			var tween = create_tween()
+			tween.tween_property(self, "rotation_degrees", Vector3(0, 90, 0), 0.5)
+			
 
 
 func outline():

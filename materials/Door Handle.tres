@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bp3ltyjrj734e"]
+
+[resource]
+resource_name = "Door Handle"
+cull_mode = 2
+metallic = 0.85
+roughness = 0.25
