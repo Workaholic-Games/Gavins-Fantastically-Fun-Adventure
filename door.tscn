@@ -155,12 +155,13 @@ transform = Transform3D(1, 0, 0, 0, 0.992, 0, 0, 0, 1, 0, 0, 0)
 material_overlay = SubResource("ShaderMaterial_8aypw")
 mesh = SubResource("ArrayMesh_bfs63")
 
-[node name="Cube_001" type="MeshInstance3D" parent="." unique_id=490062844]
+[node name="Cube_001" type="MeshInstance3D" parent="Cube" unique_id=490062844]
+transform = Transform3D(1, 0, 0, 0, 1.0080645, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ps83h")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" unique_id=2090335696]
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube/Cube_001" unique_id=2090335696]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" unique_id=1352189453]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Cube_001/StaticBody3D" unique_id=1352189453]
 shape = SubResource("ConcavePolygonShape3D_r2aww")
 
 [node name="InteractButton" type="Label3D" parent="." unique_id=1240644879]

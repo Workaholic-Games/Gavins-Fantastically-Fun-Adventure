@@ -26,8 +26,13 @@ func interact():
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 				Autoload.paused = false
 		"door":
+			opened = !opened
 			var tween = create_tween()
-			tween.tween_property(self, "rotation_degrees", Vector3(0, 90, 0), 0.5)
+			if opened:
+				tween.tween_property(self, "rotation_degrees", Vector3(0, 90, 0), 0.5)
+			else:
+				tween.tween_property(self, "rotation_degrees", Vector3(0, 0, 0), 0.5)
+
 			
 
 
