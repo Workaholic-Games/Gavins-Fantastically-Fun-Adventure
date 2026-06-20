@@ -29,9 +29,12 @@ func interact():
 			opened = !opened
 			if opened == true:
 				$DoorAnimation.play("open")
+				$CollisionShape3D/AudioStreamPlayer3D.set_stream(load("res://sfx/door_open.mp3"))
+				$CollisionShape3D/AudioStreamPlayer3D.play()
 			else:
 				$DoorAnimation.play("close")
-
+				$CollisionShape3D/AudioStreamPlayer3D.set_stream(load("res://sfx/door_close.mp3"))
+				$CollisionShape3D/AudioStreamPlayer3D.play()
 
 
 func outline():

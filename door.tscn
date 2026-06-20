@@ -41,10 +41,11 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wp0l8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_50cdl"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_50cdl")
 shader_parameter/thickness = 3.000000037253
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_color = Color(1, 1, 1, 0)
 shader_parameter/samples = 4
 shader_parameter/sensitivity = 0.249999994412
 shader_parameter/edge_fade = 0.015
@@ -204,6 +205,9 @@ type = "door"
 shape = SubResource("ConcavePolygonShape3D_27y4x")
 debug_color = Color(0, 0.5950001, 0.7, 0)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CollisionShape3D" unique_id=1247883142]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012284517, 1.3881935, 1.6565906)
+
 [node name="Cube" type="MeshInstance3D" parent="CollisionShape3D" unique_id=129207986]
 transform = Transform3D(1, 0, 0, 0, 0.992, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bfs63")
@@ -220,7 +224,7 @@ shape = SubResource("ConcavePolygonShape3D_r2aww")
 debug_color = Color(0, 0.5950001, 0.7, 0)
 
 [node name="InteractButton" type="Label3D" parent="." unique_id=1240644879]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5759095, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5044546, 1.6506189)
 visible = false
 billboard = 2
 texture_filter = 0
