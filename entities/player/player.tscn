@@ -97,6 +97,7 @@ offset_left = 722.0
 offset_top = 64.0
 offset_right = 1152.0
 offset_bottom = 656.0
+theme_override_constants/outline_size = 9
 
 [node name="Crosshair" type="Sprite2D" parent="UI" unique_id=1745028729]
 texture_filter = 2

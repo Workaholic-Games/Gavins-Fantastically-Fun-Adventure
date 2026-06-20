@@ -18,9 +18,9 @@ horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1365216562]
 offset_left = 432.0
-offset_top = 112.0
+offset_top = 96.0
 offset_right = 896.0
-offset_bottom = 640.0
+offset_bottom = 624.0
 
 [node name="FOV" type="Label" parent="VBoxContainer" unique_id=935125159]
 layout_mode = 2
@@ -70,82 +70,132 @@ offset_transform_visual_only = false
 min_value = -20.0
 max_value = 20.0
 
-[node name="Back" type="Button" parent="VBoxContainer" unique_id=1788840219]
-custom_maximum_size = Vector2(137.73, -1)
+[node name="Window Mode" type="Label" parent="VBoxContainer" unique_id=278442298]
 layout_mode = 2
-offset_transform_enabled = true
-offset_transform_position = Vector2(164.685, 10.34)
-offset_transform_visual_only = false
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 48
+text = "Window Mode"
+horizontal_alignment = 1
+
+[node name="Window Mode Button" type="OptionButton" parent="VBoxContainer" unique_id=850671398]
+custom_minimum_size = Vector2(0, 32)
+custom_maximum_size = Vector2(350, 32)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(57, 0)
+offset_transform_visual_only = false
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+alignment = 1
+selected = 2
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+
+[node name="Back" type="Button" parent="VBoxContainer" unique_id=1788840219]
+custom_maximum_size = Vector2(136, -1)
+propagate_maximum_size = true
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(168, -1)
+offset_transform_visual_only = false
+theme_type_variation = &"InventorySlot"
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
 text = "Back"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=179243749]
-layout_mode = 2
+[node name="VBoxContainer2" type="GridContainer" parent="." unique_id=624197435]
+offset_left = 504.0
+offset_top = 512.0
+offset_right = 840.0
+offset_bottom = 693.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1577494376]
+[node name="Forward" type="HBoxContainer" parent="VBoxContainer2" unique_id=179243749]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/Forward" unique_id=1577494376]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Forward"
 
-[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer" unique_id=704401651 instance=ExtResource("2_usno6")]
+[node name="InputRemapButton" parent="VBoxContainer2/Forward" unique_id=704401651 instance=ExtResource("2_usno6")]
 layout_mode = 2
+theme_type_variation = &"InventorySlot"
 action = "forward"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=509615730]
+[node name="Backward" type="HBoxContainer" parent="VBoxContainer2" unique_id=509615730]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=256260128]
+[node name="Label" type="Label" parent="VBoxContainer2/Backward" unique_id=256260128]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Backward"
 
-[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer2" unique_id=1304899678 instance=ExtResource("2_usno6")]
+[node name="InputRemapButton" parent="VBoxContainer2/Backward" unique_id=1304899678 instance=ExtResource("2_usno6")]
 layout_mode = 2
+theme_type_variation = &"InventorySlot"
 action = "backward"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=1745726419]
+[node name="Left" type="HBoxContainer" parent="VBoxContainer2" unique_id=1745726419]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=1789642851]
+[node name="Label" type="Label" parent="VBoxContainer2/Left" unique_id=1789642851]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Left"
 
-[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer3" unique_id=1663434189 instance=ExtResource("2_usno6")]
+[node name="InputRemapButton" parent="VBoxContainer2/Left" unique_id=1663434189 instance=ExtResource("2_usno6")]
 layout_mode = 2
+theme_type_variation = &"InventorySlot"
 action = "left"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=619548609]
+[node name="Right" type="HBoxContainer" parent="VBoxContainer2" unique_id=619548609]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=834060609]
+[node name="Label" type="Label" parent="VBoxContainer2/Right" unique_id=834060609]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Right"
 
-[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer4" unique_id=1477438549 instance=ExtResource("2_usno6")]
+[node name="InputRemapButton" parent="VBoxContainer2/Right" unique_id=1477438549 instance=ExtResource("2_usno6")]
 layout_mode = 2
+theme_type_variation = &"InventorySlot"
 action = "right"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer" unique_id=1504009847]
+[node name="Interact" type="HBoxContainer" parent="VBoxContainer2" unique_id=1504009847]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer5" unique_id=915241287]
+[node name="Label" type="Label" parent="VBoxContainer2/Interact" unique_id=915241287]
 layout_mode = 2
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Interact"
 
-[node name="InputRemapButton" parent="VBoxContainer/HBoxContainer5" unique_id=1916604066 instance=ExtResource("2_usno6")]
+[node name="InputRemapButton" parent="VBoxContainer2/Interact" unique_id=1916604066 instance=ExtResource("2_usno6")]
 layout_mode = 2
+theme_type_variation = &"InventorySlot"
 action = "interact"
 
 [connection signal="value_changed" from="VBoxContainer/FOV Slider" to="." method="_on_fov_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Sensitivity Slider" to="." method="_on_sensitivity_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Volume Slider" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/Window Mode Button" to="." method="_on_window_mode_button_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]

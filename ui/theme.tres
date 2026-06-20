@@ -1,5 +1,21 @@
 [gd_resource type="Theme" format=3 uid="uid://1jf0tq88femj"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rqugq"]
+color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_denks"]
+color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+grow_begin = 0.0
+grow_end = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_63ajr"]
+color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 8
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqtc0"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
 border_width_left = 6
@@ -39,6 +55,71 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usno6"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vg7j1"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dnk7n"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_denks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqugq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf26r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fgq6"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7any1"]
+bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u14a"]
 bg_color = Color(0.14117648, 0.14117648, 0.14117648, 1)
 border_width_left = 6
@@ -64,11 +145,27 @@ content_margin_left = 20.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
+HSlider/icons/grabber = null
+HSlider/icons/grabber_highlight = null
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_rqugq")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_denks")
+HSlider/styles/slider = SubResource("StyleBoxLine_63ajr")
 InventorySlot/base_type = &"Button"
 InventorySlot/styles/focus = null
 InventorySlot/styles/hover = SubResource("StyleBoxFlat_iqtc0")
 InventorySlot/styles/normal = SubResource("StyleBoxFlat_jf26r")
 InventorySlot/styles/pressed = SubResource("StyleBoxFlat_6lx7k")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_usno6")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_vg7j1")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_dnk7n")
+PopupMenu/constants/outline_size = 8
+PopupMenu/font_sizes/font_size = 32
+PopupMenu/icons/radio_checked = SubResource("AtlasTexture_denks")
+PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_rqugq")
+PopupMenu/icons/radio_unchecked_disabled = SubResource("AtlasTexture_jf26r")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_3fgq6")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_7any1")
+PopupMenu/styles/separator = null
 RichTextLabel/font_sizes/normal_font_size = 32
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_3u14a")
 TitleButton/base_type = &"Button"

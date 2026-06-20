@@ -4,17 +4,22 @@ var played : bool = false
 var inventory_opened : bool = false
 
 
+
 func interact():
 	match type:
-		
 		"scaryhead": 
 			if Autoload.inventory.has("Eyes"):
 				pass
 			else:
 				$Dialogue/Label.text = "It's missing something..."
+				$Dialogue/Label.modulate = Color(1.0, 1.0, 1.0, 1.0)
+				await get_tree().create_timer(2.0).timeout
+				var tween = create_tween()
+				tween.tween_property($Dialogue/Label, "modulate", Color(1.0, 1.0, 1.0, 0.0), 3)
 		"container":
 			if inventory_opened == true:
 				$Inventory.show()
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			else:
 				$Inventory.hide()
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
